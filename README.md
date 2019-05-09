@@ -1,4 +1,4 @@
-************cit481finalProject: Setting up a Kubernetes Cluster on Spot Instances****************
+************CIT481_FinalProject: Setting up a Kubernetes Cluster on Spot Instances****************
 
 ************************************CREATE AN AWS ACCOUNT****************************************
 1. Create an AWS account with Administrator access here: https://aws.amazon.com/getting-started/
