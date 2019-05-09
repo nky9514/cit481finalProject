@@ -1,5 +1,4 @@
-# cit481finalProject
-Setting up a Kubernetes Cluster on Spot Instances
+************cit481finalProject: Setting up a Kubernetes Cluster on Spot Instances****************
 
 ************************************CREATE AN AWS ACCOUNT****************************************
 1. Create an AWS account with Administrator access here: https://aws.amazon.com/getting-started/
@@ -12,7 +11,7 @@ Setting up a Kubernetes Cluster on Spot Instances
 
 
 
-*************************************CREATE A WORKSPACE*******************************************
+************************************CREATE A WORKSPACE*******************************************
 1. Create a Cloud9 environment in your closest region by clicking this link: https://us-west-2.console.aws.amazon.com/cloud9/home?region=us-west-2
 2. Select "Create environment", name your workspace as desired, create a VPC if you don't already have one available. For test purposes, I created a VPC with the option of a single subnet. Select the VPC you'd like to use, select the subnets of your liking, and select "Create environment" to initialize the build. 
 
@@ -20,7 +19,7 @@ Setting up a Kubernetes Cluster on Spot Instances
 
 
 
-*******************************CREATE AN IAM ROLE FOR YOUR WORKSPACE*******************************
+******************************CREATE AN IAM ROLE FOR YOUR WORKSPACE*******************************
 1. To create an IAM Role with Administrator access go to this link: https://us-west-2.console.aws.amazon.com/cloud9/home?region=us-west-2
 2. Make sure "AWS service" and "EC2" are both selected. Select "Next:Permissions". 
 3. Confirm "AdministratorAccess" is selected and click "Next".
@@ -30,7 +29,7 @@ Setting up a Kubernetes Cluster on Spot Instances
 
 
 
-************************************ATTACH IAM ROLE TO WORKSPACE***********************************
+***********************************ATTACH IAM ROLE TO WORKSPACE************************************
 1. Navigate to your Cloud9 EC2 Instance.
 2. Select the instance and go to Actions dropdown menu, choose Instance Settings, and click Attach/Replace IAM Role.
 3. Choose the name of the IAM Role you created with Administrator access from the "IAM role*" dropdown menu and select "Apply".
@@ -54,7 +53,7 @@ $ aws ec2 import-key-pair --key-name "eksworkshop" --public-key-material file://
 
 
 
-**************************************DOWNLOAD EKSCTL BINARY**************************************
+************************************DOWNLOAD EKSCTL BINARY**************************************
 1. Download the eksctl binary by entering the entire command below into your Cloud9 workspace:
 
 $ curl --silent --location "https://github.com/weaveworks/eksctl/releases/download/latest_release/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
@@ -69,7 +68,7 @@ $ eksctl version
 
 
 
-***************************************VALIDATE THE IAM ROLE*************************************
+***********************************VALIDATE THE IAM ROLE*************************************
 1. Use the command below to validate that Cloud9 IDE is using the correct IAM role:
 
 $ aws sts get-caller-identity
@@ -100,7 +99,7 @@ $ aws sts get-caller-identity
 
 
 
-*****************************************INSTALL KUBERNETES TOOLS**********************************
+***********************************INSTALL KUBERNETES TOOLS**********************************
 1. Create ~/.kube to store kubectl configurations:
 
 $ mkdir -p ~/.kube
@@ -131,7 +130,7 @@ $ for command in kubectl aws-iam-authenticator jq envsubst
 
 
 
-*************************************CLONE SERVICE REPOS******************************************
+***********************************CLONE SERVICE REPOS***************************************
 1. Use the command below:
 
 $ cd ~/environment
@@ -143,7 +142,7 @@ git clone https://github.com/brentley/ecsdemo-crystal.git
 
 
 
-****************************************CREATE EKS CLUSTER****************************************
+************************************CREATE EKS CLUSTER**************************************
 1. Create an EKS Cluster by using this command:
 
 $ eksctl create cluster --name=eksworkshop-eksctl --nodes=3 --node-ami=auto --region=${AWS_REGION}
@@ -164,7 +163,7 @@ echo "export INSTANCE_PROFILE_ARN=${INSTANCE_PROFILE_ARN}" >> ~/.bash_profile
 
 
 
-*************************************DEPLOY KUBERNETES DASHBOARD************************************
+***********************************DEPLOY KUBERNETES DASHBOARD*********************************
 1. Deploy Kubernetes dashboard using following command:
 
 $ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v1.10.1/src/deploy/recommended/kubernetes-dashboard.yaml
